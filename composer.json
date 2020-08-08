@@ -1,6 +1,6 @@
 {
     "name": "iactive/messenger",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Message sender for Iactive.pro",
     "type": "library",
     "license": "GPL-3.0-only",
@@ -11,7 +11,9 @@
         }
     ],
     "require": {
-        "php": ">7.1"
+        "php": ">7.1",
+      "ext-curl": "*",
+        "ext-json": "*"
     },
     "require-dev": {
 
