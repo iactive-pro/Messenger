@@ -11,25 +11,25 @@ use Exception;
 
 abstract class ApiMessenger
 {
-    protected $token;
+    protected $token = null;
 
     /** @var Exception */
-    protected $exception;
+    protected $exception = null;
 
     protected function __construct(string $token) {
         $this->token = $token;
     }
 
-    protected $responseBody;
+    protected $responseBody = null;
 
-    protected $status;
+    protected $status = null;
 
-    protected $isOk;
+    protected $isOk = false;
 
     /**
      * @return mixed
      */
-    public function isOk(): bool
+    public function isOk(): ?bool
     {
         return $this->isOk;
     }
