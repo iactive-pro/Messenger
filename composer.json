@@ -1,0 +1,21 @@
+{
+    "name": "iactive/messenger",
+    "description": "Message sender for Iactive.pro",
+    "type": "library",
+    "license": "proprientary",
+    "authors": [
+        {
+            "name": "Aleksandr Yasakov",
+            "email": "yasakov.org@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">7.1.*"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "classmap": ["src"]
+    }
+}
