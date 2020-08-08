@@ -2,6 +2,7 @@
     "name": "iactive/messenger",
     "description": "Message sender for Iactive.pro",
     "type": "library",
+    "license": "GPL-3.0-only",
     "authors": [
         {
             "name": "Aleksandr Yasakov",
