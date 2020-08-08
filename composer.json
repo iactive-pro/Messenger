@@ -1,5 +1,6 @@
 {
     "name": "iactive/messenger",
+    "version": "1.0.0",
     "description": "Message sender for Iactive.pro",
     "type": "library",
     "license": "GPL-3.0-only",
