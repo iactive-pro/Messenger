@@ -27,4 +27,8 @@ class ApiMessengerSender extends ApiMessenger implements SendMessageInterface
         }
     }
 
+    public function canSendMessage(string $to): bool
+    {
+        return true;
+    }
 }

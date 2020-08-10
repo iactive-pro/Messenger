@@ -6,8 +6,10 @@ interface SendMessageInterface
 {
     public function sendMessage(string $to, string $message): bool;
 
-    public function isOk();
+    public function isOk(): ?bool;
 
     public function getResponseBody();
+
+    public function canSendMessage(string $to): bool;
 
 }
