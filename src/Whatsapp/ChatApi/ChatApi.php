@@ -9,15 +9,17 @@ namespace src\Whatsapp\ApiMessenger;
 
 use Exception;
 
-abstract class ApiMessenger
+abstract class ChatApi
 {
     protected $token;
+    protected $key;
 
     /** @var Exception */
     protected $exception = null;
 
-    protected function __construct(string $token) {
+    protected function __construct(string $token, string $key) {
         $this->token = $token;
+        $this->key = $key;
     }
 
     protected $responseBody = null;
