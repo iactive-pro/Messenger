@@ -24,7 +24,8 @@ class Chat2DescSender extends Chat2Desc implements SendMessageInterface
         $service->setClientId($to);
         $service->setText($message);
         $service->setTransport(static::TRANSPORT);
-        $response = new MessagesPostServiceResponse($service->sendRequest($this->token));
+        $rsp = $service->sendRequest($this->token);
+        $response = new MessagesPostServiceResponse($rsp);
         $this->isOk = $response->status === 'success';
         $this->responseBody = $response;
         return $this->isOk();

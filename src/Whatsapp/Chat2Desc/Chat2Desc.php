@@ -20,7 +20,7 @@ abstract class Chat2Desc
 
     public function isOk(): ?bool
     {
-        return $this->isOk();
+        return $this->isOk;
     }
 
     public function getResponseBody()
