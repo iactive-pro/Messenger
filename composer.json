@@ -15,7 +15,8 @@
         "ext-curl": "*",
         "ext-json": "*",
         "vkcom/vk-php-sdk": "^5.101",
-      "ext-mbstring": "*"
+      "ext-mbstring": "*",
+        "payprocessing/chat2desk": "^1.1"
     },
     "require-dev": {
 

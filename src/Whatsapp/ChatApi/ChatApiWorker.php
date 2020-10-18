@@ -1,5 +1,5 @@
 <?php
-namespace src\Whatsapp\ApiMessenger;
+namespace src\Whatsapp\ChatApi;
 
 use Exception;
 

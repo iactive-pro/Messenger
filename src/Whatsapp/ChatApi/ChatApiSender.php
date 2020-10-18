@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace src\Whatsapp\ApiMessenger;
+namespace src\Whatsapp\ChatApi;
 
 use src\Interfaces\SendMessageInterface;
 
