@@ -7,9 +7,10 @@ namespace src\Whatsapp\Chat2Desc;
 use Platron\Chat2desk\services\BaseServiceRequest;
 use Platron\Chat2desk\services\messages\MessagesPostServiceRequest;
 use Platron\Chat2desk\services\messages\MessagesPostServiceResponse;
+use src\Interfaces\SendImageInterface;
 use src\Interfaces\SendMessageInterface;
 
-class Chat2DescSender extends Chat2Desc implements SendMessageInterface
+class Chat2DescSender extends Chat2Desc implements SendMessageInterface, SendImageInterface
 {
     public function __construct(string $token)
     {
@@ -31,8 +32,22 @@ class Chat2DescSender extends Chat2Desc implements SendMessageInterface
         return $this->isOk();
     }
 
+
     public function canSendMessage(string $to): bool
     {
         return true;
+    }
+
+    public function sendImage($to, $imageUrl, $message = '') {
+        $service = new MessagesPostServiceRequest();
+        $service->setClientId($to);
+        $service->setText($message);
+        $service->setTransport(static::TRANSPORT);
+        $service->setAttachment($imageUrl);
+        $rsp = $service->sendRequest($this->token);
+        $response = new MessagesPostServiceResponse($rsp);
+        $this->isOk = $response->status === 'success';
+        $this->responseBody = $response;
+        return $this->isOk();
     }
 }
