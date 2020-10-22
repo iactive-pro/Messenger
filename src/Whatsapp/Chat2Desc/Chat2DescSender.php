@@ -21,10 +21,15 @@ class Chat2DescSender extends Chat2Desc implements SendMessageInterface, SendIma
 
     public function sendMessage(string $to, string $message): bool
     {
+        return $this->send($to, $message);
+    }
+
+    private function send($to, $message, $imageUrl = '') {
         $service = new MessagesPostServiceRequest();
         $service->setClientId($to);
         $service->setText($message);
         $service->setTransport(static::TRANSPORT);
+        $service->setAttachment($imageUrl);
         $rsp = $service->sendRequest($this->token);
         $response = new MessagesPostServiceResponse($rsp);
         $this->isOk = $response->status === 'success';
@@ -39,15 +44,6 @@ class Chat2DescSender extends Chat2Desc implements SendMessageInterface, SendIma
     }
 
     public function sendImage($to, $imageUrl, $message = '') {
-        $service = new MessagesPostServiceRequest();
-        $service->setClientId($to);
-        $service->setText($message);
-        $service->setTransport(static::TRANSPORT);
-        $service->setAttachment($imageUrl);
-        $rsp = $service->sendRequest($this->token);
-        $response = new MessagesPostServiceResponse($rsp);
-        $this->isOk = $response->status === 'success';
-        $this->responseBody = $response;
-        return $this->isOk();
+        return $this->send($to, $message, $imageUrl);
     }
 }
