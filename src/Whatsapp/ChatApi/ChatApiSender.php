@@ -34,7 +34,7 @@ class ChatApiSender extends ChatApi implements SendMessageInterface, SendImageIn
     {
         $api = new ChatApiWorker($this->token, $this->key);
         try {
-            $this->responseBody = $api->sendFile($to, $imageUrl, basename($imageUrl));
+            $this->responseBody = $api->sendFile($to, $imageUrl, basename($imageUrl), $message);
             $this->isOk = $this->responseBody['sent'];
             return true;
         } catch (\Exception $exception) {
