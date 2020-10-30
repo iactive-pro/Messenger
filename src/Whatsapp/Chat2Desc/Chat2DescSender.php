@@ -12,7 +12,8 @@ use src\Interfaces\SendMessageInterface;
 
 class Chat2DescSender extends Chat2Desc implements SendMessageInterface, SendImageInterface
 {
-    public function __construct(string $token)
+    private $channelId;
+    public function __construct(string $token, $channelId)
     {
         parent::__construct($token);
     }
@@ -28,6 +29,7 @@ class Chat2DescSender extends Chat2Desc implements SendMessageInterface, SendIma
         $service = new MessagesPostServiceRequest();
         $service->setClientId($to);
         $service->setText($message);
+        $service->setChannelId($this->channelId);
         $service->setTransport(static::TRANSPORT);
         $service->setAttachment($imageUrl);
         $rsp = $service->sendRequest($this->token);
