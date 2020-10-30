@@ -4,9 +4,10 @@
 namespace src\Whatsapp\ApiMessenger;
 
 
+use src\Interfaces\SendImageInterface;
 use src\Interfaces\SendMessageInterface;
 
-class ApiMessengerSender extends ApiMessenger implements SendMessageInterface
+class ApiMessengerSender extends ApiMessenger implements SendMessageInterface, SendImageInterface
 {
     public function __construct(string $token)
     {
@@ -30,5 +31,10 @@ class ApiMessengerSender extends ApiMessenger implements SendMessageInterface
     public function canSendMessage(string $to): bool
     {
         return true;
+    }
+
+    public function sendImage($to, $imageUrl, $message = '')
+    {
+
     }
 }

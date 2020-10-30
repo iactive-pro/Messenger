@@ -2,9 +2,10 @@
 
 namespace src\Whatsapp\ChatApi;
 
+use src\Interfaces\SendImageInterface;
 use src\Interfaces\SendMessageInterface;
 
-class ChatApiSender extends ChatApi implements SendMessageInterface
+class ChatApiSender extends ChatApi implements SendMessageInterface, SendImageInterface
 {
     public function __construct(string $token, string $key)
     {
@@ -27,5 +28,18 @@ class ChatApiSender extends ChatApi implements SendMessageInterface
     public function canSendMessage(string $to): bool
     {
         return true;
+    }
+
+    public function sendImage($to, $imageUrl, $message = '')
+    {
+        $api = new ChatApiWorker($this->token, $this->key);
+        try {
+            $this->responseBody = $api->sendFile($to, $imageUrl, basename($imageUrl));
+            $this->isOk = $this->responseBody['sent'];
+            return true;
+        } catch (\Exception $exception) {
+            $this->exception = $exception;
+            return false;
+        }
     }
 }
