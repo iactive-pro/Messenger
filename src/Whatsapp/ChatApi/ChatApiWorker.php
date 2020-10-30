@@ -286,7 +286,7 @@ class ChatApiWorker
      */
     public function sendFile(string $chat, string $body, string $filename, string $caption = '')
     {
-        return json_decode($this->query('sendFile', ['chatId' => $chat, 'filename' => $filename, 'body' => $body, 'caption' => $caption]), 1)['sent'];
+        return json_decode($this->query('sendFile', ['phone' => $chat, 'filename' => $filename, 'body' => $body, 'caption' => $caption]), 1)['sent'];
     }
 
     /**
