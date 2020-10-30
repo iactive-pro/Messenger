@@ -16,6 +16,7 @@ class Chat2DescSender extends Chat2Desc implements SendMessageInterface, SendIma
     public function __construct(string $token, $channelId)
     {
         parent::__construct($token);
+        $this->channelId = $channelId;
     }
 
     protected const TRANSPORT = BaseServiceRequest::TRANSPORT_WHATSAPP;
