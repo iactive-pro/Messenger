@@ -2,7 +2,7 @@
 
 use src\SemySms\SemySmsSender;
 
-define('DIR', 'D:\Programms\OpenServer\domains\Messenger' . '/');
+define('DIR', 'C:\Programs\OpenServer\domains\Messenger' . '/');
 
 spl_autoload_register(function ($class)
 {
@@ -19,7 +19,7 @@ $tokenKey = [
     'key' => '257986',
 ];
 
-$smsSender = new SemySmsSender($tokenKey);
+$smsSender = new SemySmsSender($tokenKey['token'], $tokenKey['key']);
 
 $result = $smsSender->sendMessage('+79112583328', 'Здравствуйте!');
 

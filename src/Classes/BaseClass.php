@@ -1,28 +1,37 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace src\SemySms;
+declare(strict_types=1);
+
+namespace src\Classes;
 
 use Exception;
 
-abstract class SemySms
+abstract class BaseClass
 {
-    protected $tokenAndId;
+    /**
+     * @var string
+     */
+    protected $token;
+
+    protected $responseBody = null;
+
+    /**
+     * @var bool
+     */
+    protected $isOk = false;
 
     /** @var Exception */
     protected $exception = null;
 
-    protected function __construct(array $tokenAndId) {
-        $this->tokenAndId = $tokenAndId;
+    protected function __construct(string $token)
+    {
+        $this->token = $token;
     }
 
-    protected $responseBody = null;
-
-    protected $isOk = false;
-
     /**
-     * @return mixed
+     * @return bool
      */
-    public function isOk(): ?bool
+    public function isOk(): bool
     {
         return $this->isOk;
     }
